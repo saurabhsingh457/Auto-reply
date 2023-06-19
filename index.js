@@ -18,10 +18,10 @@ const SCOPES = [
 const LABEL_NAME = 'Email Replies';
 
 app.get('/', async (req, res) => {
-    const credentials = await fs.readFile('credentials.json');
+    const private = await fs.readFile('private.json');
 
     const auth = await authenticate({
-        keyfilePath: path.join(__dirname, 'credentials.json'),
+        keyfilePath: path.join(__dirname, 'private.json'),
         scopes: SCOPES
     });
 
@@ -33,8 +33,8 @@ app.get('/', async (req, res) => {
         userId: 'me'
     });
 
-    async function getCredentials() {
-        const filePath = path.join(process.cwd(), 'credentials.json');
+    async function getprivate() {
+        const filePath = path.join(process.cwd(), 'private.json');
         const content = await fs.readFile(filePath, { encoding: 'utf8' });
         return JSON.parse(content);
     }
